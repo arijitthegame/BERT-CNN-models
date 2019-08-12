@@ -24,11 +24,11 @@ img_data /= 255.0
 train_X, valid_X, train_ground, valid_ground = train_test_split(img_data, img_data, test_size=0.2, random_state=13)
 
 model = Sequential()
-model.add(Conv2D(32, 3, activation='sigmoid', padding='same', input_shape=(64,64,1)))
+model.add(Conv2D(32, 3, strides=(2,2), activation='sigmoid', padding='same', input_shape=(64,64,1)))
 model.add(BatchNormalization())
 model.add(MaxPooling2D((2,2)))
 model.add(Dropout(.2))
-model.add(Conv2D(32, 3, activation='relu', padding='same'))
+model.add(Conv2D(32, 3, strides=(1,1), activation='relu', padding='same'))
 model.add(BatchNormalization())
 model.add(MaxPooling2D((2,2)))
 model.add(Dropout(.2))

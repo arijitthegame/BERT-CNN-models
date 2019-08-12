@@ -7,8 +7,9 @@ import numpy as np
 import tensorflow as tf
 tf.enable_eager_execution()
 import tensorflow.keras as keras
+from tensorflow.keras import Sequential
 from tensorflow.keras import losses
-from tensorflow.keras.layers import Conv2D, MaxPooling2D, Input
+from tensorflow.keras.layers import Conv2D, MaxPooling2D, Input, Flatten
 from tensorflow.keras.layers import UpSampling2D, Reshape, Dense, BatchNormalization
 from tensorflow.keras.models import Model
 from tensorflow.keras.optimizers import RMSprop
@@ -27,11 +28,11 @@ model = Sequential()
 model.add(Conv2D(32, 3, strides=(2,2), activation='sigmoid', padding='same', input_shape=(64,64,1)))
 model.add(BatchNormalization())
 model.add(MaxPooling2D((2,2)))
-model.add(Dropout(.2))
+model.add(Dropout(.3))
 model.add(Conv2D(32, 3, strides=(1,1), activation='relu', padding='same'))
 model.add(BatchNormalization())
 model.add(MaxPooling2D((2,2)))
-model.add(Dropout(.2))
+model.add(Dropout(.5))
 model.add(Flatten())
 model.add(BatchNormalization())
 model.add(Dense(768))
@@ -39,11 +40,11 @@ model.add(Dense(768))
 model.add(Dense(8192)) #this is the default size
 model.add(BatchNormalization())
 model.add(Reshape((16, 16, 32)))
-model.add(Dropout(.2))
+model.add(Dropout(.5))
 model.add(UpSampling2D((2,2)))
 model.add(BatchNormalization())
 model.add(Conv2D(32, 3, strides=(1,1), activation='relu', padding='same'))
-model.add(Dropout(.2))
+model.add(Dropout(.3))
 model.add(UpSampling2D((2,2)))
 model.add(BatchNormalization())
 model.add(Conv2D(1, (3,3), strides=(1,1), activation='sigmoid', padding='same'))

@@ -14,12 +14,6 @@ from tensorflow.keras.models import Model
 from tensorflow.keras.optimizers import RMSprop
 from tensorflow.keras.layers import Dropout
 from sklearn.model_selection import train_test_split
-from ner.registry import Registry
-from ner.model import Embedding
-from ner.features import Features
-from ner.hparams import HParams
-from ner.glyph import cnn_glyph_encoder
-from ner.models.glyph import glyph_crf_arijit
 
 def glyph_decoder(hparams):
     """The decoder part of the CNN"""

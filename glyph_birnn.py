@@ -221,6 +221,7 @@ class GlyphCRF(BiCRFModel):
 
             features += [self.bert.embed(inputs=inputs,
                                             is_training=False)]
+#I don't use the glyph_id in the paper either.
 
         if Features.GLYPH_ID.value in inputs:
             id_feats = \
@@ -238,6 +239,7 @@ class GlyphCRF(BiCRFModel):
             return tf.concat(features, axis=-1)
         else:
             return features[0]
+#This embedding is never used to should be removed.
 
     def get_embedding(self, *, namespace, inputs, input_dim=8106, output_dim=256, initializer):
                 #8106 is the default size of my Chinese dictionary.

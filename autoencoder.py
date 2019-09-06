@@ -1,7 +1,6 @@
 """Working Autoencoder to pretrain the CNN"""
 from __future__ import division
 import os
-from functools import partial
 import numpy as np
 import tensorflow as tf
 tf.enable_eager_execution()

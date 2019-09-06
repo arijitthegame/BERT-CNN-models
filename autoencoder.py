@@ -1,4 +1,3 @@
-# pylint: disable=W0611, C0103, C0413, E0401, C0301
 """Working Autoencoder to pretrain the CNN"""
 from __future__ import division
 import os
@@ -16,9 +15,7 @@ from tensorflow.keras.optimizers import RMSprop
 from tensorflow.keras.layers import Dropout
 from sklearn.model_selection import train_test_split
 
-path = os.environ["SCALE_DIR"]
-#image_path = os.path.join(path, 'data/glyph/latest/images.npy')
-image_path = os.path.join(path, 'scale19/new_image_array.npy')
+image_path = os.path.join("image_array.npy")
 img_data = np.load(image_path)
 img_data = img_data.reshape(-1, 64, 64, 1)
 img_data /= 255.0
@@ -50,7 +47,7 @@ model.add(BatchNormalization())
 model.add(Conv2D(1, (3,3), strides=(1,1), activation='sigmoid', padding='same'))
 
 model.compile(loss='mean_squared_error', optimizer=RMSprop())
-model_path = os.path.join(path, 'scale19/models/Autoencoder/autoencoder.ckpt')
+model_path = os.path.join(path, 'models/Autoencoder/autoencoder.ckpt')
 cp_callback = tf.keras.callbacks.ModelCheckpoint(model_path,
                                                  save_weights_only=True, verbose=40, period=200)
 model.fit(train_X, train_ground, batch_size=256, epochs=200,

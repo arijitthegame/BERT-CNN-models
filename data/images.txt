@@ -1,0 +1,2 @@
+the numpy array is stored here: https://drive.google.com/open?id=1gfUaSE_VhKIafmlfd0g7WkzDebvg_EQ1
+The numpy array contains images of both ZH and English characters.  
